@@ -19,8 +19,11 @@ xmlns:aop="http://www.springframework.org/schema/aop"
 	<mvc:resources location="/" mapping="*.html"></mvc:resources>
 	<mvc:resources location="/common/" mapping="/common/*.html"></mvc:resources>
 	<mvc:resources location="/WEB-INF/main/" mapping="/main/*.html"></mvc:resources>
-	<mvc:resources location="/css/" mapping="**"></mvc:resources>
-	<mvc:resources location="/js/" mapping="/js/*.js"></mvc:resources>
+	<mvc:resources location="/common/js/" mapping="/common/js/*.js"></mvc:resources>
+	<mvc:resources location="/common/css/" mapping="/common/css/**"></mvc:resources>
+	<mvc:resources location="/common/images/" mapping="/common/images/**"></mvc:resources>
+	<mvc:resources location="/common/svg/" mapping="/common/svg/**"></mvc:resources>
+	<mvc:resources location="/common/fonts/" mapping="/common/fonts/**"></mvc:resources>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/"></property>
