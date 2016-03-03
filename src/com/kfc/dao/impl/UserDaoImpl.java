@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kfc.dao.UserDao;
 import com.kfc.vo.User;
 
-@Repository("ud")
+@Repository("ud")//bean µÄid
 public class UserDaoImpl implements UserDao {
 	@PersistenceContext(name="unitName")
 	private EntityManager em;

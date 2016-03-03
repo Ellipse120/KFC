@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.kfc.service.UserService;
 import com.kfc.vo.User;
 
@@ -19,12 +18,10 @@ public class UserMgrController {
 	private UserService us;
 
 	@RequestMapping("/userLogin")
-	public String login(JSONObject json,
+	public String login(String userName,String password,
 			HttpServletRequest request) throws Exception {
-		//JSONObject json1 = new JSONObject("{'name':'xiazdong','age':20}");
-		System.out.println(json);
-		String userName = (String) json.get("userName");
-		String password = (String) json.get("password");
+		System.out.println(userName);
+		System.out.println(password);
 		User user = us.login(userName, password);
 		if (user != null) {
 			request.getSession().setAttribute("userName", userName);

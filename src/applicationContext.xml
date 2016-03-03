@@ -88,5 +88,5 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 		proxy-target-class:表示是否对“目标类”启用代理。true:表示使用cglib方式(类)，false:表示使用Proxy方式（接口）
 	-->
 	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="false" />
+		proxy-target-class="false" /><!-- 有接口的基于代理 -->
 </beans>

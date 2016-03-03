@@ -79,7 +79,7 @@
 </div>
 
 
-<form enctype='application/json' class="form-inline" id="form1" name= "form11" method="get" action="/KFC/userLogin" />
+<form enctype='application/json' class="form-inline" id="form1" name= "form1" method="get" action="/KFC/userLogin" />
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail3">Email address</label>
             
@@ -207,14 +207,17 @@ $.fn.serializeObject = function()
    });    
    return o;     
 };  
-           function onClik(){  
-        var data = $("#form1").serializeArray(); //自动将form表单封装成json  
-        alert(JSON.stringify(data));  
-        var userinfo = $('#form1').serializeObject();
-       /*  var v = JSON.stringify(userinfo);
-        alert(v); */ //从json对象中解析出字符串
-        document.form11.submit();
-}  
+
+    function onClik(){   
+    	 /* $('form1').submit(function() {
+    		var userinfo = $(this).serializeObject();
+    		  alert(JSON.stringify(userinfo));
+    		  return false;
+    		});  */
+        var userinfo = $('#form1').serializeObject();//自动将form表单封装成json
+         var v = JSON.stringify(userinfo);//从json对象中解析出字符串
+        document.form1.submit(); 
+	}  
       </script>
       <script type="application/javascript">  
   
