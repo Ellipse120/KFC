@@ -77,18 +77,20 @@
   </a>
 
 </div>
-     <form class="form-inline" id="form1" method="post" action="" /*################################################################表单信息添加####################################################################################*/>
+
+
+<form enctype='application/json' class="form-inline" id="form1" name= "form11" method="get" action="/KFC/userLogin" />
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail3">Email address</label>
             
 <br/><br/>
-    <input type="text" class="form-control" id="UserName" placeholder="UserName" name="UserName">
+    <input type="text" class="form-control" id="UserName" placeholder="UserName" name="userName">
   </div>
   <div class="form-group">
    
       <label class="sr-only" for="Password3" id="password" name="password" >Password</label>
       <br/><br/>
-    <input type="password" class="form-control" id="Password"  name="Password" placeholder="Password">
+    <input type="password" class="form-control" id="Password"  name="password" placeholder="Password">
 <br/>
   </div>
   <br> <br/> <div class="checkbox">
@@ -103,7 +105,7 @@
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"  >
              注册
       </button>
-      <button type="submit" class="btn btn-primary btn-lg" data-toggle="modal"  onclick="onClik();" >
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" onclick="onClik()" >
             登陆
     
       </button> 
@@ -125,7 +127,7 @@
       </div>
       <div class="modal-body">
     
-<form  method="post" action="" id="reform"   /*################################################################表单信息添加####################################################################################*/ >
+<form  method="post" action="userRegist" id="reform"  >
   <div class="form-group">
     <label for="exampleInputEmail1">用户名</label>
     <input  class="form-control" id="reUserName" name="reUserName" placeholder="UserName">
@@ -156,6 +158,7 @@
   </div>
   <button type="submit" class="btn btn-default" onclick="reonClik();">Submit</button>
 </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -205,10 +208,12 @@ $.fn.serializeObject = function()
    return o;     
 };  
            function onClik(){  
-       /* var data = $("#form1").serializeArray(); //自动将form表单封装成json  
-        alert(JSON.stringify(data));  */
-        var userinfo = $('#form1').serializeObject();  
-        alert(JSON.stringify(userinfo)); /*################################################################封装好的用户的登录信息reuserinfo####################################################################################*/ 
+        var data = $("#form1").serializeArray(); //自动将form表单封装成json  
+        alert(JSON.stringify(data));  
+        var userinfo = $('#form1').serializeObject();
+       /*  var v = JSON.stringify(userinfo);
+        alert(v); */ //从json对象中解析出字符串
+        document.form11.submit();
 }  
       </script>
       <script type="application/javascript">  

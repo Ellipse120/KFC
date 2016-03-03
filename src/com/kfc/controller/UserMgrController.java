@@ -2,6 +2,8 @@ package com.kfc.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +19,12 @@ public class UserMgrController {
 	private UserService us;
 
 	@RequestMapping("/userLogin")
-	public String login(String userName, String password,
-			HttpServletRequest request) {
+	public String login(JSONObject json,
+			HttpServletRequest request) throws Exception {
+		//JSONObject json1 = new JSONObject("{'name':'xiazdong','age':20}");
+		System.out.println(json);
+		String userName = (String) json.get("userName");
+		String password = (String) json.get("password");
 		User user = us.login(userName, password);
 		if (user != null) {
 			request.getSession().setAttribute("userName", userName);

@@ -17,8 +17,17 @@ public class User implements Serializable{
 	private String userName;
 	private String password;
 	private String phoneNum;
+	private String address;
 	//private Address addr;
 	
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public Integer getUserId() {
 		return userId;

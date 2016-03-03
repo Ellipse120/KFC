@@ -36,10 +36,10 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	</bean> -->
 	
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
-       	<property name="url" value="jdbc:mysql://192.168.223.129:3306/fish"></property>
+       	<property name="url" value="jdbc:mysql://120.27.108.61:3306/test"></property>
        	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-       	<property name="username" value="junfeng"></property>
-       	<property name="password" value="123"></property>
+       	<property name="username" value="test1"></property>
+       	<property name="password" value="test1"></property>
     </bean>
     
     <!--

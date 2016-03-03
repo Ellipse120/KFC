@@ -19,7 +19,7 @@ public class UserTest {
 	}
 	@Test
 	public void testQueryUser(){
-		User u = us.login("Lena", "123");
+		User u = us.login("Lucy", "124");
 		Assert.assertTrue(u!=null);
 	}
 	@Test
@@ -32,7 +32,8 @@ public class UserTest {
 		
 		user.setUserName("Lucy");
 		user.setPassword("124");
-		user.setPhoneNum("13822565456");
+		user.setPhoneNum("15922565456");
+		user.setAddress("Shanghai");
 		//user.setAddr(addr);
 		us.regist(user);
 	}
