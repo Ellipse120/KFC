@@ -4,6 +4,6 @@ import com.kfc.vo.Item;
 
 public interface ItemDao {
 	public int addItem(Item item);
-	public int deleteItem(Integer id);
-	public void queryItem(String itemName);
+	public int deleteItem(Item item);
+	public Item queryItem(String itemName);
 }

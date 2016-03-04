@@ -127,22 +127,22 @@
       </div>
       <div class="modal-body">
     
-<form  method="post" action="userRegist" id="reform"  >
+<form  method="post" action="/KFC/userRegist" id="reform"  >
   <div class="form-group">
     <label for="exampleInputEmail1">用户名</label>
-    <input  class="form-control" id="reUserName" name="reUserName" placeholder="UserName">
+    <input type="text" class="form-control" id="reUserName" name="userName" placeholder="UserName">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">密码</label>
-    <input type="password" class="form-control" id="rePassword" name="rePassword" placeholder="Password">
+    <input type="password" class="form-control" id="rePassword" name="password" placeholder="Password">
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1">地址</label>
-    <input class="form-control" id="reAddress" name="reAddress" placeholder="Location">
+    <input type="text" class="form-control" id="reAddress" name="address" placeholder="Location">
   </div>
     <div class="form-group">
     <label for="exampleInputPassword1">手机号</label>
-    <input type="text" class="form-control" id="rePhone" name="reName" placeholder="PhoneNumber" >
+    <input type="text" class="form-control" id="rePhone" name="phoneNum" placeholder="PhoneNumber" >
   </div>
 
             
@@ -189,7 +189,10 @@
          alert("事件");
      }
    </script>
-       <script type="application/javascript">  
+   
+   
+   
+<script type="application/javascript">  
   
 $.fn.serializeObject = function()    
 {    
@@ -209,17 +212,25 @@ $.fn.serializeObject = function()
 };  
 
     function onClik(){   
-    	 /* $('form1').submit(function() {
-    		var userinfo = $(this).serializeObject();
-    		  alert(JSON.stringify(userinfo));
-    		  return false;
-    		});  */
         var userinfo = $('#form1').serializeObject();//自动将form表单封装成json
          var v = JSON.stringify(userinfo);//从json对象中解析出字符串
         document.form1.submit(); 
-	}  
-      </script>
-      <script type="application/javascript">  
+          /* $("#form1").on("click",function(){
+        	 $.ajax("userLogin",{
+        		 data:userinfo,
+        		 dataType:"json",
+        		 type:"post",
+        		 success:function(d){
+        			 alert(d);
+        		 }
+        	 });
+           */
+     }
+</script>
+
+
+
+<script type="application/javascript">  
   
 $.fn.serializeObject = function()    
 {    

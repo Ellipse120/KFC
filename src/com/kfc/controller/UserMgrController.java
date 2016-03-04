@@ -32,8 +32,8 @@ public class UserMgrController {
 	}
 
 	@RequestMapping("/userRegist")
-	@ResponseBody
-	public String regist(@RequestBody User user) {
+	public String regist(User user,
+			HttpServletRequest request) {
 		System.out.println(user.getUserName());
 		int flag = us.regist(user);
 		if (flag > 0) {

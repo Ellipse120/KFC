@@ -1,42 +1,67 @@
 package com.kfc.vo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="orders")
 public class Order {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer orderId;
-	private String orderName;
-	private Double settlement;
+	private String orderNum;
+	private String orderInfo;
+	private int amount;
+	private Double settle;
+	private boolean orderStatus;
 	private User user;
-	private Item item;
 	
+	public String getOrderNum() {
+		return orderNum;
+	}
+	public void setOrderNum(String orderNum) {
+		this.orderNum = orderNum;
+	}
+	public String getOrderInfo() {
+		return orderInfo;
+	}
+	public void setOrderInfo(String orderInfo) {
+		this.orderInfo = orderInfo;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public Double getSettle() {
+		return settle;
+	}
+	public void setSettle(Double settle) {
+		this.settle = settle;
+	}
+	public boolean isOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(boolean orderStatus) {
+		this.orderStatus = orderStatus;
+	}
 	public Integer getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
-	public String getOrderName() {
-		return orderName;
-	}
-	public void setOrderName(String orderName) {
-		this.orderName = orderName;
-	}
-	public Double getSettlement() {
-		return settlement;
-	}
-	public void setSettlement(Double settlement) {
-		this.settlement = settlement;
-	}
+	
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Item getItem() {
-		return item;
-	}
-	public void setItem(Item item) {
-		this.item = item;
-	}
+	
 	
 	
 }
