@@ -8,16 +8,21 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kfc.vo.Item;
+@Controller
 public class ItemMgrController {
-	
-	public static void queryItem()throws Exception{
+	@RequestMapping("/itemShow")
+	public void showItem(Item item,
+			HttpServletResponse response)throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
 		Connection conn = factory.createConnection();
@@ -36,9 +41,10 @@ public class ItemMgrController {
 					try {
 						String s = tm.getText();
 						JSONObject json = new JSONObject(s);
-						String itemName = (String) json.get("itemName");
+						response.getWriter().print(json.toString());
 						//Double unitPrice = (Double) json.get("unitPrice");
 						//int amount = (int) json.get("amount");
+						String itemName = (String) json.get("itemName");
 						System.out.println(itemName);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -49,8 +55,8 @@ public class ItemMgrController {
 
 	}
 	
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		queryItem();
-	}
+	}*/
 	
 }

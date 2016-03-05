@@ -34,7 +34,7 @@ public class OrderMgrController {
 	private OrderService os;
 	
 	@RequestMapping("/orderSubmit")
-	public void orderSubmit(Order o,
+	public void orderSubmit(Order order,
 			HttpServletRequest request)throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
@@ -44,14 +44,14 @@ public class OrderMgrController {
 		Destination queue = (Destination) context.getBean("queueDestination");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 		MessageProducer producer = sen.createProducer(queue);
-		Boolean flag = os.orderIsValid(o.isOrderStatus());
+		Boolean flag = os.orderIsValid(order.isOrderStatus());
 		if(flag==true){
 			JSONObject json = new JSONObject();
-			json.put("orderNum", o.getOrderNum());
-			json.put("orderInfo", o.getOrderInfo());
-			json.put("amount", o.getAmount());
-			json.put("settle",o.getSettle() );
-			json.put("orderStatus", o.isOrderStatus());
+			json.put("orderNum", order.getOrderNum());
+			json.put("orderInfo",order.getOrderInfo());
+			json.put("amount", order.getAmount());
+			json.put("settle",order.getSettle() );
+			json.put("orderStatus", order.isOrderStatus());
 			/*json.put("timestamp", new Date());
 			json.put("itemName", "Õ¨¼¦³á");
 			json.put("unitPrice", "5");
