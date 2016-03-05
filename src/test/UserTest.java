@@ -7,7 +7,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.kfc.service.UserService;
-import com.kfc.vo.Address;
 import com.kfc.vo.User;
 
 public class UserTest {
