@@ -40,7 +40,12 @@
 
 <noscript hidden="" style="display:none;" class="J-hub" data-hublaziness="load" data-hubcss="fewww:www/css/lazyload.css,iconfont/css/global-iconfont.css@e1ee452" data-hubstamp="yui_3_16_0_1_1457051868244_403" data-hubstate="40"></noscript>
 
-<link charset="utf-8" rel="stylesheet" id="yui_3_16_0_1_1457051868244_6" href="./ord/saved_resource(3)"><script charset="utf-8" id="yui_3_16_0_1_1457051868244_8" src="./ord/saved_resource(4)" async=""></script><script charset="utf-8" id="yui_3_16_0_1_1457051868244_477" src="./ord/saved_resource(5)" async=""></script><link charset="utf-8" rel="stylesheet" id="yui_3_16_0_1_1457051868244_491" href="./ord/saved_resource(6)"><script charset="utf-8" id="yui_3_16_0_1_1457051868244_492" src="./ord/saved_resource(7)" async=""></script><link charset="utf-8" rel="stylesheet" id="yui_3_16_0_1_1457051868244_505" href="./ord/saved_resource(8)"><script charset="utf-8" id="yui_3_16_0_1_1457051868244_525" src="./ord/saved_resource(9)" async=""></script><script charset="utf-8" id="yui_3_16_0_1_1457051868244_548" src="./ord/saved_resource(10)" async=""></script><script charset="utf-8" id="yui_3_16_0_1_1457051868244_978" src="./ord/saved_resource(11)" async=""></script><script charset="utf-8" id="yui_3_16_0_1_1457051868244_991" src="./ord/saved_resource(12)" async=""></script><script type="text/javascript" async="" src="./ord/saved_resource(13)"></script></head>
+<link charset="utf-8" rel="stylesheet" id="yui_3_16_0_1_1457051868244_6" href="./ord/saved_resource(3)"><script charset="utf-8" id="yui_3_16_0_1_1457051868244_8" src="./ord/saved_resource(4)" async=""></script><script charset="utf-8" id="yui_3_16_0_1_1457051868244_477" src="./ord/saved_resource(5)" async=""></script><link charset="utf-8" rel="stylesheet" id="yui_3_16_0_1_1457051868244_491" href="./ord/saved_resource(6)"><script charset="utf-8" id="yui_3_16_0_1_1457051868244_492" src="./ord/saved_resource(7)" async=""></script><link charset="utf-8" rel="stylesheet" id="yui_3_16_0_1_1457051868244_505" href="./ord/saved_resource(8)"><script charset="utf-8" id="yui_3_16_0_1_1457051868244_525" src="./ord/saved_resource(9)" async=""></script><script charset="utf-8" id="yui_3_16_0_1_1457051868244_548" src="./ord/saved_resource(10)" async=""></script><script charset="utf-8" id="yui_3_16_0_1_1457051868244_978" src="./ord/saved_resource(11)" async=""></script><script charset="utf-8" id="yui_3_16_0_1_1457051868244_991" src="./ord/saved_resource(12)" async=""></script><script type="text/javascript" async="" src="./ord/saved_resource(13)"></script>
+    
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    
+    
+    </head>
 <body class="has-order-nav" id="orders" style="position: static;">
         <div data-component="qrcode-accountstick" class="component-qrcode-accountstick mt-component--booted" mt-scope="[]" data-component-config="{&quot;lazyRender&quot;:false,&quot;afterLoad&quot;:false}" id="yui_3_16_0_1_1457051868244_20"><div class="stick-qrcode J-hub" data-module="www-base" data-hubnamespace="SimpleQrcode" data-hubstamp="yui_3_16_0_1_1457051868244_91" data-hubstate="40">
     <a class="account-xiaomei" href="http://www.meituan.com/mobile/down/mydealmt" hidefocus="true">
@@ -371,8 +376,10 @@
                 <div class="order-cell order-op">操作</div>
             </div>
             <div class="J-order-w" id="yui_3_16_0_1_1457051868244_1016">
-                <div class="order-title" id="yui_3_16_0_1_1457051868244_1015">订单编号：<a href="http://www.meituan.com/order/view/2401965852" target="_blank">2401965852</a>
-                    <form action="http://www.meituan.com/order/cancel/2401965852" method="post" data-orderid="2401965852"><span style="display:none"><input type="hidden" name="csrf" value="zTkyVcJPE-H2IC8TyTv8Pv30UIWUgeRGmaQkBwOvyieReWQp_9KZMl0EzVN9Lqw4"></span>
+                <div class="order-title" id="yui_3_16_0_1_1457051868244_1015">订单编号：<a href="#" target="_blank" id="order_num">2401965852</a>
+                    <form action="http://www.meituan.com/order/cancel/2401965852" method="post" data-orderid="2401965852">       <span style="display:none">
+                        <input type="hidden" name="csrf" value="zTkyVcJPE-H2IC8TyTv8Pv30UIWUgeRGmaQkBwOvyieReWQp_9KZMl0EzVN9Lqw4" id="kfcorder">
+                        </span>
                         <a class="del order-cancel" href="javascript:void(0)"></a>
                     </form>
                 </div>
@@ -382,27 +389,30 @@
                             <div class="deal-info cf">
                                 <a class="img-w" href="http://www.meituan.com/deal/35936350.html" target="_blank" title="CoCo都可茶饮饮品5选1"><img src="./ord/4e2aa00f50f7fbad7061a3a8ec7de697121844.jpg@0_12_1333_808a-388h_640w_2e_90q" width="81" height="50"></a>
                                 <div class="info-detail">
-                                    <a class="deal-title" href="http://www.meituan.com/deal/35936350.html" title="" target="_blank">CoCo都可茶饮饮品5选1</a>
+                                    <a class="deal-title" href="http://www.meituan.com/deal/35936350.html" title="" target="_blank"><p id="order_name">CoCo都可茶饮饮品5选1</p></a>
                                     <p>团购结束：2016-03-31</p>
-                                    <a target="_blank" class="biz-info" href="http://www.meituan.com/deal/35936350#business-info">商家信息</a>
+                                    <a target="_blank" class="biz-info" href="#">商家信息</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="order-cell order-quantity">1</div>
+                        <div class="order-cell order-quantity" id="order_count">1</div>
                         <div class="order-cell order-money">
-                            <span class="money">¥</span>7
-                            <br><span class="delivery-text">
+                            <span class="money">¥</span><p id="order_price">7</p>
+                            <br>
+                            
+                            <div class="delivery-text" id="order_address">
                                 
-                                
-                            </span>
+                            </div>
+                        
                         </div>
+                        
                         <div class="order-cell order-status">
                                 未付款
                                 <div><a target="_blank" gaevent="/orders/content/orderdetail" href="http://www.meituan.com/order/view/2401965852">订单详情</a></div>
                         </div> 
-                            <div class="order-cell order-op">
+                            <div class="order-cell order-op" id="orderSubm">
                                 
-                                    <a class="btn-hot btn-mini" href="http://www.meituan.com/order/check/2401965852" gaevent="/orders/all/pay">付款</a>
+                                    <button id="postorder">付款</button>
                                     
                             </div>
                     </div>
@@ -553,7 +563,7 @@
 	&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="copyright"&gt;
-        &lt;p&gt;&amp;copy;&lt;span title="I:1; Q:18; S:17; C:5; F:0; T:255.47; H:com"&gt;2016&lt;/span&gt;&lt;a href="http://www.meituan.com/"&gt;美团网团购&lt;/a&gt; meituan.com &lt;a href="http://www.miibeian.gov.cn/" target="_blank"&gt;京ICP证070791号&lt;/a&gt; 京公网安备11010502025545号&lt;a href="http://www.meituan.com/about/rules" target="_blank"&gt; 电子公告服务规则&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&amp;copy;&lt;span title="I:1; Q:18; S:17; C:5; F:0; T:255.47; H:com"&gt;2016&lt;/span&gt;&lt;a href="NJU Group10"&gt;KFD外卖&lt;/a&gt;# &lt;a href="http://www.miibeian.gov.cn/" target="_blank"&gt;京ICP证070791号&lt;/a&gt; 京公网安备11010502025545号&lt;a href="http://www.meituan.com/about/rules" target="_blank"&gt; 电子公告服务规则&lt;/a&gt;&lt;/p&gt;
     &lt;/div&gt;
     &lt;ul class="cert cf"&gt;
         &lt;li class="cert__item"&gt;&lt;a class="sp-ft sp-ft--record" title="备案信息" href="http://www.meituan.com/about/openinfo" hidefocus="true" target="_blank"&gt;备案信息&lt;/a&gt;&lt;/li&gt;
@@ -581,12 +591,108 @@
     <script>M.Env["data-conf"] = {"domainHost":"meituan.com","cdnDomainHost":"meituan.net","rootHost":"www.meituan.com","app":"www","comboBase":"\/\/s0.meituan.net\/bs\/css\/?f=","yuiVersion":"3.16.0","httpReferer":"http:\/\/www.meituan.com\/order\/check\/2401965852?mtt=1.deal%2Fbuytest.0.0.ilcz117a","debug":false,"pageview":"\/orders\/","pageviewData":{"page":"orders\/list"},"asyncPageviewData":[],"gaCustomVar":"","coreCssUrl":"\/\/s0.meituan.net\/bs\/css\/?f=fewww:www\/css\/common.css,www\/css\/base.css,www\/css\/seo.css@e1ee452","moreCssUrl":"\/\/s0.meituan.net\/bs\/css\/?f=fewww:www\/css\/table-section.css,www\/css\/order.css,www\/css\/order-list.css,www\/css\/qrcode.css,www\/css\/account.css@e1ee452","coreJsUrl":"\/\/s0.meituan.net\/bs\/js\/?f=require(@mtfe\/yui):build\/mt-web-core\/mt-web-core.js@3.16.0;fewww:www\/js\/inline\/conf.js@e1ee452;require(@mtfe\/fe.core):mt-core\/mt-core.js,mt-base\/mt-base.js,mt-uiutil\/mt-uiutil.js,mt-window\/mt-window.js,mt-event\/mt-event.js,mt-event-hover\/mt-event-hover.js,mt-component\/mt-component.js,mt-viewporttracker\/mt-viewporttracker.js,mt-bigrender\/mt-bigrender.js,mt-imageloader\/mt-imageloader.js,mt-ajax\/mt-ajax.js,uix-dropdown\/uix-dropdown.js,p-node-placeholder\/p-node-placeholder.js,p-node-effect\/p-node-effect.js@0.2.125;fewww:www\/js\/base.js,www\/js\/tracker.js,www\/js\/hub.js,www\/component\/search-box\/search-box.js,www\/component\/cate-nav\/cate-nav.js@e1ee452;require(@mtfe\/fe.core):mt-ngparser\/mt-ngparser.js,mt-scope\/mt-scope.js,mt-validator\/mt-validator.js,mt-autoinit\/mt-autoinit.js,mt-bind\/mt-bind.js@0.2.125","jsDepsUrl":"\/\/s0.meituan.net\/bs\/js\/?f=require(@mtfe\/fe.core):deps.js@0.2.125;fewww:www\/deps.js,\/www\/js\/inline\/init.js@e1ee452","ravenUrl":"\/\/s0.meituan.net\/bs\/js\/?f=fewww:vendor\/js\/raven-helper.min.js@e1ee452","ag":"\/\/s0.meituan.net\/bs\/file\/?f=fewww:\/vendor\/js\/ag.js@e1ee452","DEV":0,"nodelogin":false,"repoHash":{"yui":"3.16.0","fecore":"0.2.125","fewww":"e1ee452"},"useBS":true,"BSTypeJs":"js","BSTypeCss":"css","BSName":"fewww"};</script>
 
 
+    
+
 <script src="./ord/saved_resource(14)"></script><div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important" class=""></div>
 <script src="./ord/saved_resource(15)"></script>
 <script src="./ord/saved_resource(16)"></script>
 
-    
+   
+<!--
+             //pass order from left_main_cart.html
 
+            sessionStorage.kfcorder_num = pro.num;
+            sessionStorage.kfcorder_name = pro.name;
+            sessionStorage.kfcorder_price = pro.price;
+            sessionStorage.kfcorder_id = pro.id;
+            sessionStorage.kfcorder_count = pro.count;
+            sessionStorage.kfcorder_address = pro.address;
+            
+-->
+    
+    <!-- creating an example of JSON
+        var session = {
+                  'screens': [],
+                  'state': true
+                };
+                session.screens.push({ 'name': 'screenA', 'width': 450, 'height': 250 });
+                session.screens.push({ 'name': 'screenB', 'width': 650, 'height': 350 });
+                session.screens.push({ 'name': 'screenC', 'width': 750, 'height': 120 });
+                session.screens.push({ 'name': 'screenD', 'width': 250, 'height': 60 });
+                session.screens.push({ 'name': 'screenE', 'width': 390, 'height': 120 });
+                session.screens.push({ 'name': 'screenF', 'width': 1240, 'height': 650 });
+
+                // Converting the JSON string with JSON.stringify()
+                // then saving with localStorage in the name of session
+                localStorage.setItem('session', JSON.stringify(session));
+
+                // Example of how to transform the String generated through 
+                // JSON.stringify() and saved in localStorage in JSON object again
+                var restoredSession = JSON.parse(localStorage.getItem('session'));
+
+                // Now restoredSession variable contains the object that was saved
+                // in localStorage
+                console.log(restoredSession);
+
+               
+
+    -->
+    
+<script>
+    //$("#kfcorder").val = sessionStorage.kfcorder;
+    //alert(sessionStorage.kfcorder);
+    
+     var order = {'orderNum':[],'orderName':[],'settle':[],'orderId':[],'amount':[],'address':[]};
+    
+    /*var order = "{'num':" + sessionStorage.kfcorder_num  +  ",'name':"+ sessionStorage.kfcorder_name + ",'price':" + sessionStorage.kfcorder_price +
+        ",'id':" + sessionStorage.kfcorder_id + ",'count':"+ sessionStorage.kfcorder_count + ",'address':'"+ sessionStorage.kfcorder_address + "'}";*/
+    
+    order.orderNum=sessionStorage.kfcorder_num;
+    order.orderName=sessionStorage.kfcorder_name;
+    //order.price=sessionStorage.kfcorder_price;
+    order.orderId=sessionStorage.kfcorder_id;
+    order.settle=sessionStorage.kfcorder_price;
+    order.amount=sessionStorage.kfcorder_count;
+    order.address=sessionStorage.kfcorder_address;
+    
+   /* var str = $.param(order);
+    $("#order_address").text(order);
+    
+    //$("#addr").val(sessionStorage.addr);
+    
+    */
+    //$("#order_address").val(sessionStorage.kfcorder_num);
+    $("#order_num").val(sessionStorage.kfcorder_num);
+    $("#order_name").val(sessionStorage.kfcorder_name);
+    $("#order_count").val(sessionStorage.kfcorder_count);
+    $("#order_price").val(sessionStorage.kfcorder_price);
+    $("#order_address").val(sessionStorage.kfcorder_address);
+    document.getElementById('order_address').textContent=sessionStorage.kfcorder_address;
+    document.getElementById('order_num').textContent=sessionStorage.kfcorder_num;
+    document.getElementById('order_name').textContent=sessionStorage.kfcorder_name;
+    document.getElementById('order_count').textContent=sessionStorage.kfcorder_count;
+    document.getElementById('order_price').textContent=sessionStorage.kfcorder_price;
+    document.getElementById('order_num').textContent=sessionStorage.kfcorder_num;
+    
+    $("#postorder").on("click",function(){
+        $.ajax("orderSubmit",{data:order,type:"post",sucess:function(d){
+            var table = $("<table>");
+            var tr = $("<tr>");
+            tr.append($("<td>").text(order.orderNum));
+            tr.append($("<td>").text(order.orderName));
+            tr.append($("<td>").text(order.settle));
+            tr.append($("<td>").text(order.orderId));
+            tr.append($("<td>").text(order.amount));
+            tr.append($("<td>").text(order.address));
+            table.append(tr);
+            
+            $("#orderSubm").append(table);
+            
+        }});    
+    })
+    
+    //alert(order);
+</script>
     
 
     

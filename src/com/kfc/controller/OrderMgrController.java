@@ -23,6 +23,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kfc.service.OrderService;
 import com.kfc.service.UserService;
@@ -33,9 +34,10 @@ public class OrderMgrController {
 	@Autowired(required=true)
 	private OrderService os;
 	
-	@RequestMapping("/orderSubmit")
-	public void orderSubmit(Order order,
-			HttpServletRequest request)throws Exception{
+	@RequestMapping("/common/orderSubmit")
+	@ResponseBody
+	public void orderSubmit(String orderNum,String orderName,String settle,
+			String orderId,String amount,String address)throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
 		Connection conn = factory.createConnection();
@@ -44,20 +46,21 @@ public class OrderMgrController {
 		Destination queue = (Destination) context.getBean("queueOrder");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 		MessageProducer producer = sen.createProducer(queue);
-		Boolean flag = os.orderIsValid(order.isOrderStatus());
+		Boolean flag = os.orderIsValid(true);
 		if(flag==true){
 			JSONObject json = new JSONObject();
-			json.put("orderNum", order.getOrderNum());
-			json.put("orderInfo",order.getOrderInfo());
-			json.put("amount", order.getAmount());
-			json.put("settle",order.getSettle() );
-			json.put("orderStatus", order.isOrderStatus());
+			json.put("orderNum", orderNum);
+			//json.put("orderInfo",orderInfo);
+			json.put("amount", amount);
+			json.put("settle",settle);
+			json.put("orderStatus",true);
 			/*json.put("timestamp", new Date());
 			json.put("itemName", "Õ¨¼¦³á");
 			json.put("unitPrice", "5");
 			json.put("amount", "20");*/
 			TextMessage msg = sen.createTextMessage(json.toString());
 			producer.send(msg);
+			System.out.println("clikck......"+msg);
 		}
 		
 		producer.close();
@@ -66,6 +69,21 @@ public class OrderMgrController {
 			
 
 	}
+	
+	/*@RequestMapping("/common/orderSubmit")
+	@ResponseBody
+	public Order test3(String num,String name,String price,
+			String id,String count,String address){
+		System.out.println("clikck......"+num+","+name);
+		
+		//Order s = new Order();
+		//s.setId(100);
+		//s.setXh("123");
+		//s.setUname("John");
+		
+		return null;
+	}*/
+
 	
 	
 }

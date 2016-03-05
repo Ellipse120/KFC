@@ -247,7 +247,11 @@
             margin-right: 100px;
         }
           
-          
+        #addr {
+            width: 150px;
+            height: 25px;
+            border: 0;
+          }
           
           
     /* 页脚的部分 */      
@@ -385,14 +389,11 @@
             <p>小计：<span id="sub_total">0.0</span></p>
         <p>外送费：<span id="carry_price">0.0</span></p>
         <p>合计：<span id="total">0.0</span></p>
-            <a href="kfcorder.html">
-            <img src="images/jiesuan.gif" class="center-block">
-            </a>
-        
+        <a href="kfcorder.html"><img src="images/jiesuan.gif" class="center-block"></a>
         </div>
         <div id="cart_addr">
-            <p>送餐地址：<a href="#">修改</a></p>
-            <p>北京市中关村科学院南路985楼</p>
+            <p>送餐地址：<a href="address.html">修改</a></p>
+            <p><input type="text" id="addr" class="address" value="default address" ></p>
         </div>
         <div id="cart_tip">
             <p>提醒：根据您最终提交订单时间，送餐时间可能略有调整。</p>
@@ -409,14 +410,13 @@
                 <li class="footer_li">联系我们</li>
                 <li class="footer_li">加入我们</li>
                 <li class="footer_li">网站运营者信息</li>
-                <li class="footer_li footer_li_long">版权所有 John'com（中国）投资有限公司 沪ICP备05031779号</li>
+                <li class="footer_li footer_li_long">版权所有 John'com（中国）投资有限公司 Group10  沪ICP备05031779号</li>
             </ul>
           </div>
         </div>
           
           
-          
-          
+        
           
       </div>
     <!--   end body      -->
@@ -424,7 +424,13 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
       <script>
-    
+        
+         
+          
+          var addr1 = $("#addr").val();
+          //document.write(sessionStorage.addr);
+          $("#addr").val(sessionStorage.addr);
+          //alert(addr1);
           
           
           
@@ -686,19 +692,35 @@
             li.clone().css("position","absolute").css("left",x).css("top",y)
                 .appendTo(li.parent()).animate({left:xt,top:yt,opacity:0},800,
             function(){
-               var pid=li.attr("pid");
+            var pid=li.attr("pid");
             var name=li.find(".pro_name").text();
             var price=li.find(".main_price strong").text();
             var count=parseInt(li.find("input").val());
+            var addr1 = $("#addr").val();
+            //$("#addr").val(sessionStorage.addr);
+            //生成订单编号num
+            var today = new Date();
+            var num = today.getTime() + Math.floor(Math.random()*11) + pid;
+            alert(num.length);
             
-            var pro={name:name,price:price,id:pid,count:count};
-            
-            //alert(pid+"...."+name+"..."+price+"...."+count);
-             addToCart(pro);
+            var pro={"name":name,"price":price,"id":pid,"count":count,"address":addr1,"num":num};
+                
+            sessionStorage.kfcorder_num = pro.num;
+            sessionStorage.kfcorder_name = pro.name;
+            sessionStorage.kfcorder_price = pro.price;
+            sessionStorage.kfcorder_id = pro.id;
+            sessionStorage.kfcorder_count = pro.count;
+            sessionStorage.kfcorder_address = pro.address;
+           
+           // alert(pid+"...."+name+"..."+price+"...."+count+"...."+addr1);
+            addToCart(pro);
             
             caculate();
             
             rendar();  
+                
+            
+            
             }
                                               
         );
