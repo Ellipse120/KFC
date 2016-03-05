@@ -28,7 +28,7 @@ public class ItemMgrController {
 		Connection conn = factory.createConnection();
 		conn.start();
 		
-		Destination queue = (Destination) context.getBean("queueDestination");
+		Destination queue = (Destination) context.getBean("queueItem");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 		MessageConsumer consumer = sen.createConsumer(queue);
 		consumer.setMessageListener(new MessageListener() {

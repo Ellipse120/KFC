@@ -41,7 +41,7 @@ public class OrderMgrController {
 		Connection conn = factory.createConnection();
 		conn.start();
 		
-		Destination queue = (Destination) context.getBean("queueDestination");
+		Destination queue = (Destination) context.getBean("queueOrder");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 		MessageProducer producer = sen.createProducer(queue);
 		Boolean flag = os.orderIsValid(order.isOrderStatus());
