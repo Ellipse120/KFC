@@ -22,12 +22,12 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User queryUser(String userName, String password) {
+	public User queryUser(User user) {
 		String jpql = "select u from User u where u.userName=:name and u.password=:pwd";
 		@SuppressWarnings("unchecked")
 		List<User> list = em.createQuery(jpql)
-				.setParameter("name", userName)
-				.setParameter("pwd", password)
+				.setParameter("name", user.getUserName())
+				.setParameter("pwd", user.getPassword())
 				.getResultList();
 		if(list.isEmpty())
 			return null;

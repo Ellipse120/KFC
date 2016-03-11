@@ -18,8 +18,12 @@ public class UserTest {
 	}
 	@Test
 	public void testQueryUser(){
-		User u = us.login("Lucy", "124");
-		Assert.assertTrue(u!=null);
+		User user =new User();
+		user.setUserName("Lucy");
+		user.setPassword("124");
+		us.login(user);
+		
+		Assert.assertTrue(user!=null);
 	}
 	@Test
 	public void testAddUser(){

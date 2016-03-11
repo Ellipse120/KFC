@@ -13,22 +13,22 @@ public class UserServiceImpl implements UserService {
 	private UserDao ud;
 
 	@Override
-	public User login(String userName, String password) {
-		return ud.queryUser(userName, password);
+	public User login(User user) {
+			return ud.queryUser(user);
 	}
 
 	@Override
 	@Transactional
 	public int regist(User user) {
-		return ud.addUser(user);
+			return ud.addUser(user);
 	}
 
 }
 /*		
-TxType.REQUIRED;		Èç¹ûÊÂÎñ´æÔÚ£¬×öÎªÊÂÎñµÄÒ»²¿·ÖÖ´ÐÐ£»Èç¹ûÊÂÎñ²»´æÔÚ£¬Ôò¿ªÆôÐÂÊÂÎñ£¬²¢ÔÚ·½·¨·µ»ØºóÌá½»¡£
-TxType.REQUIRES_NEW; 	Èç¹ûÊÂÎñ´æÔÚ£¬×öÎªÊÂÎñµÄÒ»²¿·ÖÖ´ÐÐ£»Èç¹ûÊÂÎñ²»´æÔÚ£¬Ôò¿ªÆôÐÂÊÂÎñ£¬²¢¹ÒÆðÔ­ÏÈµÄÊÂÎñ£¬ÐÂÊÂÎñ½áÊøºó£¬Ô­ÊÂÎñ¼ÌÐøÖ´ÐÐ¡£
-TxType.MANDATORY;		Èç¹ûÊÂÎñ´æÔÚ£¬×öÎªÊÂÎñµÄÒ»²¿·ÖÖ´ÐÐ£»Èç¹ûÊÂÎñ²»´æÔÚ£¬ÔòÅ×³öÊÂÎñ²»´æÔÚÒì³£
-TxType.NEVER;			Èç¹ûÊÂÎñ´æÔÚ£¬Å×³öÒì³££»Èç¹ûÊÂÎñ²»´æÔÚ£¬ÔòÕý³£Ö´ÐÐ
-TxType.NOT_SUPPORTED;	Èç¹ûÊÂÎñ´æÔÚ£¬Ôò¹ÒÆðÊÂÎñ£¬Æä×öÎªÊÂÎñÍâ´úÂëÖ´ÐÐ£¬·µ»ØºóÊÂÎñ»Ö¸´
-TxType.SUPPORTS;		Èç¹ûÊÂÎñ´æÔÚ£¬×öÎªÊÂÎñµÄÒ»²¿·ÖÖ´ÐÐ£»Èç¹ûÊÂÎñ²»´æÔÚ£¬Ôò×öÎª·ÇÊÂÎñ´úÂëÖ´ÐÐ
+TxType.REQUIRED;		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ£¬²ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½á½»ï¿½ï¿½
+TxType.REQUIRES_NEW; 	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ£¬²ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½Èµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð¡ï¿½
+TxType.MANDATORY;		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½ï¿½ï¿½ì³£
+TxType.NEVER;			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½×³ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
+TxType.NOT_SUPPORTED;	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½
+TxType.SUPPORTS;		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ²»´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
 */

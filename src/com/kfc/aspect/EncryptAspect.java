@@ -28,6 +28,19 @@ public class EncryptAspect {
 	@Around(logMd)
 	public Object encryptLogin(ProceedingJoinPoint point) {
 		Object o = null;
+		User user = (User) point.getArgs()[0];
+		String mdLog = MD5Util.GetMD5Code(user.getPassword());
+		user.setPassword(mdLog);
+		try {
+			o = point.proceed();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		return o;
+	}
+	/*@Around(logMd)
+	public Object encryptLogin(ProceedingJoinPoint point) {
+		Object o = null;
 		String logPsd = (String) point.getArgs()[1];
 		String mdLog = MD5Util.GetMD5Code(logPsd);
 
@@ -37,5 +50,5 @@ public class EncryptAspect {
 			e.printStackTrace();
 		}
 		return o;
-	}
+	}*/
 }

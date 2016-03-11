@@ -17,3 +17,4 @@ update user set address = 'Nanjing City in Jiangsu'where userid=2
 select * from users
 select * from orders;
 drop table user
+delete from users where userName=''
