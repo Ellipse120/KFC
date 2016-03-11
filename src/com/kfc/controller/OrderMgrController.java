@@ -24,7 +24,7 @@ public class OrderMgrController {
 	
 	@RequestMapping("/common/orderSubmit")
 	@ResponseBody
-	public void orderSubmit(String orderNum,String orderName,String settle,
+	public void orderSubmit(String orderNum,String orderInfo,String settle,
 			String orderId,String amount,String address)throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
@@ -39,14 +39,16 @@ public class OrderMgrController {
 			System.out.println(orderNum);
 			Order order = new Order();
 			order.setOrderNum(orderNum);
+			order.setOrderInfo(orderInfo);
 			order.setAmount(Integer.parseInt(amount));
 			order.setSettle(Double.parseDouble(settle));
+			order.setAddress(address);
 			order.setOrderStatus(true);
 			os.createOrder(order);
 			
 			JSONObject json = new JSONObject();
 			json.put("orderNum", orderNum);
-			//json.put("orderInfo",orderInfo);
+			json.put("orderInfo",orderInfo);
 			json.put("amount", amount);
 			json.put("settle",settle);
 			json.put("orderStatus",true);

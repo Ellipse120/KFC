@@ -642,13 +642,13 @@
     //$("#kfcorder").val = sessionStorage.kfcorder;
     //alert(sessionStorage.kfcorder);
     
-     var order = {'orderNum':[],'orderName':[],'settle':[],'orderId':[],'amount':[],'address':[]};
+     var order = {'orderNum':[],'orderInfo':[],'settle':[],'orderId':[],'amount':[],'address':[]};
     
     /*var order = "{'num':" + sessionStorage.kfcorder_num  +  ",'name':"+ sessionStorage.kfcorder_name + ",'price':" + sessionStorage.kfcorder_price +
         ",'id':" + sessionStorage.kfcorder_id + ",'count':"+ sessionStorage.kfcorder_count + ",'address':'"+ sessionStorage.kfcorder_address + "'}";*/
     
     order.orderNum=sessionStorage.kfcorder_num;
-    order.orderName=sessionStorage.kfcorder_name;
+    order.orderInfo=sessionStorage.kfcorder_name;
     //order.price=sessionStorage.kfcorder_price;
     order.orderId=sessionStorage.kfcorder_id;
     order.settle=sessionStorage.kfcorder_price;

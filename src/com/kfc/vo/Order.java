@@ -16,8 +16,16 @@ public class Order {
 	private int amount;
 	private Double settle;
 	private boolean orderStatus;
+	private String address;
 	private User user;
 	
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getOrderNum() {
 		return orderNum;
 	}
