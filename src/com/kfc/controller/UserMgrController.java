@@ -17,7 +17,7 @@ public class UserMgrController {
 	@Autowired(required=true)
 	private UserService us;
 
-	@RequestMapping("/userLogin")
+	@RequestMapping("common/userLogin")
 	public String login(String userName,String password,
 			HttpServletRequest request) throws Exception {
 		System.out.println(userName);
@@ -25,21 +25,20 @@ public class UserMgrController {
 		User user = us.login(userName, password);
 		if (user != null) {
 			request.getSession().setAttribute("userName", userName);
-			return "registSuc";
+			return "redirect:/common/left_main_cart.html";
 		} else {
-			return "login";
+			return "redirect:/common/login.html";
 		}
 	}
 
-	@RequestMapping("/userRegist")
-	public String regist(User user,
-			HttpServletRequest request) {
+	@RequestMapping("common/userRegist")
+	public String regist(User user) {
 		System.out.println(user.getUserName());
 		int flag = us.regist(user);
 		if (flag > 0) {
-			return "redirect:/registSuc.html";
+			return "redirect:/common/login.html";
 		} else {
-			return "regist";
+			return "redirect:/common/error.html";
 		}
 	}
 }

@@ -15,4 +15,5 @@ insert into user(username,password,phonenum,address)
 values('Lena','123','10086','nanjing City in Jiangsu')
 update user set address = 'Nanjing City in Jiangsu'where userid=2
 select * from users
+select * from orders;
 drop table user

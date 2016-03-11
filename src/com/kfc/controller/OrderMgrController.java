@@ -34,6 +34,9 @@ public class OrderMgrController {
 	@Autowired(required=true)
 	private OrderService os;
 	
+	@Autowired(required=true)
+	private static Order order;
+	
 	@RequestMapping("/common/orderSubmit")
 	@ResponseBody
 	public void orderSubmit(String orderNum,String orderName,String settle,
@@ -48,16 +51,22 @@ public class OrderMgrController {
 		MessageProducer producer = sen.createProducer(queue);
 		Boolean flag = os.orderIsValid(true);
 		if(flag==true){
+			System.out.println(orderNum);
+			/*
+			order.setOrderNum(orderNum);
+			order.setAmount(Integer.parseInt(amount));
+			order.setSettle(Double.parseDouble(settle));
+			order.setOrderStatus(true);
+			os.createOrder(order);*/
+			
 			JSONObject json = new JSONObject();
 			json.put("orderNum", orderNum);
 			//json.put("orderInfo",orderInfo);
 			json.put("amount", amount);
 			json.put("settle",settle);
 			json.put("orderStatus",true);
-			/*json.put("timestamp", new Date());
-			json.put("itemName", "Õ¨¼¦³á");
-			json.put("unitPrice", "5");
-			json.put("amount", "20");*/
+			json.put("address", address);
+			
 			TextMessage msg = sen.createTextMessage(json.toString());
 			producer.send(msg);
 			System.out.println("clikck......"+msg);
@@ -69,21 +78,5 @@ public class OrderMgrController {
 			
 
 	}
-	
-	/*@RequestMapping("/common/orderSubmit")
-	@ResponseBody
-	public Order test3(String num,String name,String price,
-			String id,String count,String address){
-		System.out.println("clikck......"+num+","+name);
-		
-		//Order s = new Order();
-		//s.setId(100);
-		//s.setXh("123");
-		//s.setUname("John");
-		
-		return null;
-	}*/
-
-	
 	
 }
