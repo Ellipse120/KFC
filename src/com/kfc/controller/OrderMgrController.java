@@ -1,41 +1,26 @@
 package com.kfc.controller;
 
-import java.util.Date;
-
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-import javax.servlet.http.HttpServletRequest;
-
 import org.json.JSONObject;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kfc.service.OrderService;
-import com.kfc.service.UserService;
 import com.kfc.vo.Order;
 @Controller
 public class OrderMgrController {
 	
 	@Autowired(required=true)
 	private OrderService os;
-	
-	@Autowired(required=true)
-	private static Order order;
 	
 	@RequestMapping("/common/orderSubmit")
 	@ResponseBody
@@ -52,12 +37,12 @@ public class OrderMgrController {
 		Boolean flag = os.orderIsValid(true);
 		if(flag==true){
 			System.out.println(orderNum);
-			/*
+			Order order = new Order();
 			order.setOrderNum(orderNum);
 			order.setAmount(Integer.parseInt(amount));
 			order.setSettle(Double.parseDouble(settle));
 			order.setOrderStatus(true);
-			os.createOrder(order);*/
+			os.createOrder(order);
 			
 			JSONObject json = new JSONObject();
 			json.put("orderNum", orderNum);
@@ -66,7 +51,7 @@ public class OrderMgrController {
 			json.put("settle",settle);
 			json.put("orderStatus",true);
 			json.put("address", address);
-			
+			System.out.println(json.toString());
 			TextMessage msg = sen.createTextMessage(json.toString());
 			producer.send(msg);
 			System.out.println("clikck......"+msg);
