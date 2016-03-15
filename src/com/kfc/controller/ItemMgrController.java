@@ -1,5 +1,6 @@
 package com.kfc.controller;
 
+import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -10,6 +11,8 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.pool.PooledConnectionFactory;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -20,17 +23,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kfc.vo.Item;
 @Controller
 public class ItemMgrController {
+
+	@Resource(name="pooledConnectionFactory")
+	private PooledConnectionFactory factory;
+	@Resource(name="queueItem")
+	private ActiveMQQueue queueItem;
+	
 	@RequestMapping("/itemShow")
 	public void showItem(Item item,
 			HttpServletResponse response)throws Exception{
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
-		Destination queue = (Destination) context.getBean("queueItem");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageConsumer consumer = sen.createConsumer(queue);
+		MessageConsumer consumer = sen.createConsumer(queueItem);
 		consumer.setMessageListener(new MessageListener() {
 
 			@Override
