@@ -106,6 +106,10 @@
 			<artifactId>activemq-pool</artifactId>
 			<version>5.7.0</version>
 		</dependency>
-	
+		<dependency>
+		<groupId>commons-pool</groupId>
+		<artifactId>commons-pool</artifactId>
+		<version>1.6</version>
+	</dependency>
   </dependencies>
 </project>

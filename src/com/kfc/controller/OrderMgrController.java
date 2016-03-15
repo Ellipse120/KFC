@@ -27,7 +27,7 @@ public class OrderMgrController {
 	public void orderSubmit(String orderNum,String orderInfo,String settle,
 			String orderId,String amount,String address)throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
+		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		

@@ -98,12 +98,13 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 		<property name="targetConnectionFactory" ref="targetConnectionFactory" />
 	</bean>
 
-	<!-- <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+	 <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
 		<property name="connectionFactory" ref="targetConnectionFactory" />
 		<property name="maxConnections" value="10" />
-		
+		<property name="idleTimeout" value="50000"></property>
+		<property name="maximumActiveSessionPerConnection" value="300"></property>
 		<property name="expiryTimeout" value="10"></property>
-	</bean> -->
+	</bean> 
 
 	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
 	<!-- <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">

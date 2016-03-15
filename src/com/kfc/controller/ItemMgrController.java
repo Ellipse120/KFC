@@ -24,7 +24,7 @@ public class ItemMgrController {
 	public void showItem(Item item,
 			HttpServletResponse response)throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("targetConnectionFactory");
+		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
