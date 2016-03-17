@@ -1,11 +1,15 @@
 package com.kfc.controller;
 
+import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+
+import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.pool.PooledConnectionFactory;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -21,19 +25,20 @@ public class OrderMgrController {
 	
 	@Autowired(required=true)
 	private OrderService os;
+	@Resource(name="pooledConnectionFactory")
+	private PooledConnectionFactory factory;
+	@Resource(name="queueOrder")
+	private ActiveMQQueue queueOrder;
 	
 	@RequestMapping("/common/orderSubmit")
 	@ResponseBody
 	public void orderSubmit(String orderNum,String orderInfo,String settle,
 			String orderId,String amount,String address)throws Exception{
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ConnectionFactory factory = (ConnectionFactory) context.getBean("pooledConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
 		
-		Destination queue = (Destination) context.getBean("queueOrder");
 		Session sen = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-		MessageProducer producer = sen.createProducer(queue);
+		MessageProducer producer = sen.createProducer(queueOrder);
 		Boolean flag = os.orderIsValid(true);
 		if(flag==true){
 			System.out.println(orderNum);
@@ -56,7 +61,7 @@ public class OrderMgrController {
 			System.out.println(json.toString());
 			TextMessage msg = sen.createTextMessage(json.toString());
 			producer.send(msg);
-			System.out.println("clikck......"+msg);
+			//System.out.println("clikck......"+msg);
 		}
 		
 		producer.close();
