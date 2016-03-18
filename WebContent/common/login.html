@@ -184,6 +184,12 @@
         </div></center>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+    	
+    	//alert(sessionStorage.uName);
+    </script>
+    
          <script>
       function clicke(){
          alert("事件");
@@ -211,10 +217,15 @@ $.fn.serializeObject = function()
    return o;     
 };  
 
-    function onClik(){   
+    function onClik(){ 
+    	
+    
+        sessionStorage.uName = document.getElementById('UserName').value;
+        
         var userinfo = $('#form1').serializeObject();//自动将form表单封装成json
          var v = JSON.stringify(userinfo);//从json对象中解析出字符串
         document.form1.submit(); 
+         
           /* $("#form1").on("click",function(){
         	 $.ajax("userLogin",{
         		 data:userinfo,
@@ -255,6 +266,6 @@ $.fn.serializeObject = function()
         alert(JSON.stringify(reuseruserinfo)); /*################################################################封装好的用户的注册信息reuserinfo####################################################################################*/
 }  
       </script>
-      <script type="application/javascript"> 
+      
   </body>
 </html>

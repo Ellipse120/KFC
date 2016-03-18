@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kfc.service.OrderService;
 import com.kfc.vo.Order;
+import com.kfc.vo.User;
 @Controller
 public class OrderMgrController {
 	
@@ -33,7 +34,7 @@ public class OrderMgrController {
 	@RequestMapping("/common/orderSubmit")
 	@ResponseBody
 	public void orderSubmit(String orderNum,String orderInfo,String settle,
-			String orderId,String amount,String address)throws Exception{
+			String orderId,String amount,String address,String uName)throws Exception{
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -41,7 +42,10 @@ public class OrderMgrController {
 		MessageProducer producer = sen.createProducer(queueOrder);
 		Boolean flag = os.orderIsValid(true);
 		if(flag==true){
+			//System.out.println(uName);
 			System.out.println(orderNum);
+			User user = new User();
+			user.setUserName(uName);
 			Order order = new Order();
 			order.setOrderNum(orderNum);
 			order.setOrderInfo(orderInfo);
@@ -49,6 +53,7 @@ public class OrderMgrController {
 			order.setSettle(Double.parseDouble(settle));
 			order.setAddress(address);
 			order.setOrderStatus(true);
+			order.setUser(user);
 			os.createOrder(order);
 			
 			JSONObject json = new JSONObject();
@@ -58,6 +63,7 @@ public class OrderMgrController {
 			json.put("settle",settle);
 			json.put("orderStatus",true);
 			json.put("address", address);
+			json.put("uName", uName);
 			System.out.println(json.toString());
 			TextMessage msg = sen.createTextMessage(json.toString());
 			producer.send(msg);
