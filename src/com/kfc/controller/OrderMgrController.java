@@ -46,6 +46,7 @@ public class OrderMgrController {
 			System.out.println(orderNum);
 			User user = new User();
 			user.setUserName(uName);
+			
 			Order order = new Order();
 			order.setOrderNum(orderNum);
 			order.setOrderInfo(orderInfo);
