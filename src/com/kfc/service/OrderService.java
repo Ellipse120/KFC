@@ -6,4 +6,5 @@ public interface OrderService {
 	public boolean orderIsValid(Boolean orderStatus);
 	public int createOrder(Order order);
 	public Order showOrder(Integer orderId);
+	public String queryPhone(String uName);
 }

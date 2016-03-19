@@ -46,6 +46,8 @@ public class OrderMgrController {
 			System.out.println(orderNum);
 			User user = new User();
 			user.setUserName(uName);
+			String phoneNum = os.queryPhone(uName);
+			user.setPhoneNum(phoneNum);
 			
 			Order order = new Order();
 			order.setOrderNum(orderNum);
@@ -65,6 +67,7 @@ public class OrderMgrController {
 			json.put("orderStatus",true);
 			json.put("address", address);
 			json.put("uName", uName);
+			json.put("phoneNum", phoneNum);
 			System.out.println(json.toString());
 			TextMessage msg = sen.createTextMessage(json.toString());
 			producer.send(msg);

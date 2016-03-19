@@ -26,6 +26,10 @@ public class OrderServiceImpl implements OrderService {
 	public Order showOrder(Integer orderId) {
 		return odd.queryOrder(orderId);
 	}
+	@Override
+	public String queryPhone(String uName) {
+		return odd.queryPhoneNum(uName).getPhoneNum();
+	}
 
 }
 

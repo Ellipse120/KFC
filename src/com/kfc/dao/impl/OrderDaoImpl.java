@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kfc.dao.OrderDao;
 import com.kfc.vo.Order;
+import com.kfc.vo.User;
 
 @Repository("od")
 public class OrderDaoImpl implements OrderDao{
@@ -27,6 +28,20 @@ public class OrderDaoImpl implements OrderDao{
 		@SuppressWarnings("unchecked")
 		List<Order> list = em.createQuery(jpql)
 				.setParameter("id", orderId)
+				.getResultList();
+		if(list.isEmpty())
+			return null;
+		else
+		return list.get(0);
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public User queryPhoneNum(String uName) {
+		String jpql = "select u from User u where u.userName=:name";
+		List<User> list = em.createQuery(jpql)
+				.setParameter("name", uName)
 				.getResultList();
 		if(list.isEmpty())
 			return null;
