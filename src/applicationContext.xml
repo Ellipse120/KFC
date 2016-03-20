@@ -116,7 +116,7 @@ xmlns:jpa="http://www.springframework.org/schema/data/jpa"
     <!--这个是队列目的地，点对点的-->
     <bean id="queueItem" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg>
-            <value>item</value>
+            <value>pipsend</value>
         </constructor-arg>
     </bean>
     <bean id="queueOrder" class="org.apache.activemq.command.ActiveMQQueue">

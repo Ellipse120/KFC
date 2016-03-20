@@ -1,5 +1,8 @@
 package com.kfc.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -19,6 +22,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kfc.vo.Item;
 @Controller
@@ -28,10 +32,12 @@ public class ItemMgrController {
 	private PooledConnectionFactory factory;
 	@Resource(name="queueItem")
 	private ActiveMQQueue queueItem;
+	private Item it;
+	List<Item> list = new ArrayList<Item>();
 	
 	@RequestMapping("/itemShow")
-	public void showItem(Item item,
-			HttpServletResponse response)throws Exception{
+	@ResponseBody
+	public Item showItem(HttpServletResponse request)throws Exception{
 		Connection conn = factory.createConnection();
 		conn.start();
 		
@@ -47,9 +53,7 @@ public class ItemMgrController {
 					try {
 						String s = tm.getText();
 						JSONObject json = new JSONObject(s);
-						response.getWriter().print(json.toString());
-						//Double unitPrice = (Double) json.get("unitPrice");
-						//int amount = (int) json.get("amount");
+						
 						String itemName = (String) json.get("itemName");
 						System.out.println(itemName);
 					} catch (Exception e) {
@@ -58,6 +62,7 @@ public class ItemMgrController {
 					
 			}
 		});
+		return it;
 
 	}
 	

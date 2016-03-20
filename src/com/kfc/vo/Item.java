@@ -19,7 +19,16 @@ public class Item implements Serializable{
 	private Double unitPrice;
 	private int amount;
 	private Double total;
+	private String score;
 	
+	
+	
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String score) {
+		this.score = score;
+	}
 	public Integer getItemId() {
 		return itemId;
 	}
