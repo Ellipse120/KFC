@@ -42,7 +42,7 @@ public class OrderMgrController {
 		MessageProducer producer = sen.createProducer(queueOrder);
 		Boolean flag = os.orderIsValid(true);
 		if(flag==true){
-			//System.out.println(uName);
+			System.out.println(uName);
 			System.out.println(orderNum);
 			User user = new User();
 			user.setUserName(uName);
