@@ -392,8 +392,8 @@
         <a href="kfcorder.html"><img src="images/jiesuan.gif" class="center-block"></a>
         </div>
         <div id="cart_addr">
-            <p>送餐地址：<a href="address.html">修改</a></p>
-            <p><input type="text" id="addr" class="address" value="default address" ></p>
+            <p>送餐地址：<a href="http://120.27.108.61:8080/KFC/address.html">修改</a></p>
+            <p><input type="text" id="addr" class="address" value="default address" >NJ</p>
         </div>
         <div id="cart_tip">
             <p>提醒：根据您最终提交订单时间，送餐时间可能略有调整。</p>
@@ -429,7 +429,7 @@
           
           var addr1 = $("#addr").val();
           //document.write(sessionStorage.addr);
-          $("#addr").val(sessionStorage.addr);
+          $("#addr").val(window.name);
           //alert(addr1);
           
           
